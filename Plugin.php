@@ -16,7 +16,8 @@ class Plugin extends \MapasCulturais\Plugin {
         $config = $this->config;
         $app->hook('GET(<<*>>):before', function() use($app, $config) {
             $enabled_routes = [
-                ['site', 'address_by_postalcode']
+                ['site', 'address_by_postalcode'],
+                ['file', 'privateFile'],
             ];
 
             if (in_array([$this->id, $this->action], $enabled_routes)) {
