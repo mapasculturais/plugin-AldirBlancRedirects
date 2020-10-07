@@ -19,13 +19,19 @@ class Plugin extends \MapasCulturais\Plugin {
                 ['site', 'address_by_postalcode'],
                 ['file', 'privateFile'],
             ];
-
+            
             // não redireciona quando acessa formulários do inciso 3
             if ($this->id == 'opportunity') {
                 $requestedEntity = $this->requestedEntity;
                 $opportunitiesInciso3 = $app->controller('AldirBlanc')->getOpportunitiesInciso3();
-
                 if (in_array($requestedEntity, $opportunitiesInciso3)) {
+                    return;
+                }
+            }
+            if ($this->id == 'registration') {
+                $requestedEntity = $this->requestedEntity;
+                $opportunitiesInciso3 = $app->controller('AldirBlanc')->getOpportunitiesInciso3();
+                if (in_array($requestedEntity->getEntity()['opportunity'], $opportunitiesInciso3)) {
                     return;
                 }
             }
