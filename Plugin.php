@@ -21,14 +21,14 @@ class Plugin extends \MapasCulturais\Plugin {
             ];
 
             // não redireciona quando acessa formulários do inciso 3
-            if ($this->id == 'opportunity') {
-                $requestedEntity = $this->requestedEntity;
-                $opportunitiesInciso3 = $app->controller('AldirBlanc')->getOpportunitiesInciso3();
+            // if ($this->id == 'opportunity') {
+            //     $requestedEntity = $this->requestedEntity;
+            //     $opportunitiesInciso3 = $app->controller('AldirBlanc')->getOpportunitiesInciso3();
 
-                if (in_array($requestedEntity, $opportunitiesInciso3)) {
-                    return;
-                }
-            }
+            //     if (in_array($requestedEntity, $opportunitiesInciso3)) {
+            //         return;
+            //     }
+            // }
 
             if (in_array([$this->id, $this->action], $enabled_routes)) {
                 return;
